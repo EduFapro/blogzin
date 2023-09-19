@@ -5,7 +5,6 @@ import 'home_controller.dart';
 class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
@@ -14,29 +13,49 @@ class HomeView extends GetView<HomeController> {
       appBar: AppBar(
         title: Text('Home'),
       ),
-       body: SingleChildScrollView(
-         child: Padding(
-           padding: EdgeInsets.only(left: 50),
-           child: Column(
-             // crossAxisAlignment: CrossAxisAlignment.center,
-             children: [
-               Container(
-                 alignment: Alignment.center,
-                 color: Colors.redAccent,
-                 height: screenHeight* 0.3,
-                 width: screenWidth * 0.45,
-               ),
-               SizedBox(height: screenHeight * 0.3,),
-               Container(
-                 alignment: Alignment.center,
-                 color: Colors.redAccent,
-                 height: screenHeight * 0.3,
-                 width: screenWidth * 0.45,
-               ),
-             ],
-           ),
-         ),
-       ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(left: 50),
+          child: Column(
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                alignment: Alignment.center,
+                color: Colors.redAccent,
+                height: screenHeight * 0.3,
+                width: screenWidth * 0.65,
+              ),
+              SizedBox(
+                height: screenHeight * 0.13,
+              ),
+              Container(
+                alignment: Alignment.center,
+                color: Colors.redAccent,
+                height: screenHeight * 0.3,
+                width: screenWidth * 0.65,
+              ),
+              SizedBox(
+                height: screenHeight * 0.13,
+              ),
+              Container(
+                alignment: Alignment.center,
+                color: Colors.redAccent,
+                height: screenHeight * 0.3,
+                width: screenWidth * 0.65,
+              ),
+              SizedBox(
+                height: screenHeight * 0.13,
+              ),
+              Container(
+                alignment: Alignment.center,
+                color: Colors.redAccent,
+                height: screenHeight * 0.3,
+                width: screenWidth * 0.65,
+              ),
+            ],
+          ),
+        ),
+      ),
       // body: Obx(
       //       () => ListView.builder(
       //     itemCount: controller.books.length,
