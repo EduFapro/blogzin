@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:web_blog/routes/app_pages.dart';
+import 'package:web_blog/core/constants/app_pages.dart';
 
 
 void main() => runApp(MyApp());

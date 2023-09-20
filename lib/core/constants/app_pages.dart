@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import '../features/home/home_binding.dart';
-import '../features/home/home_view.dart';
+import '../../features/home/home_binding.dart';
+import '../../features/home/home_view.dart';
 import 'app_routes.dart';
 
 class AppPages {
