@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../core/data/services/lista_livros_local.dart';
 import 'home_controller.dart';
+import 'meu_preview_livro.dart';
 
 class HomeView extends GetView<HomeController> {
   @override
@@ -20,7 +22,52 @@ class HomeView extends GetView<HomeController> {
         header: MyHeader(height: headerHeight, width: headerWidth),
         screenWidth: screenWidth,
         screenHeight: screenHeight,
-        children: <Widget>[],
+        children: [
+          Container(width: screenWidth),
+          Row(
+            children: [
+              Column(
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    color: Colors.redAccent,
+                    height: screenHeight * 0.3,
+                    width: firstColumnWidth,
+                    child: MeuPreviewLivro(livro: listaLivros[0]),
+                  ),
+                  SizedBox(
+                    height: screenHeight * 0.13,
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    color: Colors.redAccent,
+                    height: screenHeight * 0.3,
+                    width: firstColumnWidth,
+                    child: MeuPreviewLivro(livro: listaLivros[1]),
+                  ),
+                  SizedBox(
+                    height: screenHeight * 0.13,
+                  ),
+                ],
+              ),
+              SizedBox(
+                width: screenWidth * 0.05,
+              ),
+              Column(
+                children: [
+                  Container(
+                    color: Colors.redAccent,
+                    height: screenHeight * 0.9,
+                    width: secondColumnWidth,
+                  ),
+                ],
+              ),
+              SizedBox(
+                width: screenWidth * 0.01,
+              ),
+            ],
+          ),
+        ],
       ),
       // body: Obx(
       //       () => ListView.builder(
@@ -79,66 +126,7 @@ class ScrollableTwoColumnLayout extends StatelessWidget {
     final secondColumnWidth = screenWidth * 0.24;
     return SingleChildScrollView(
       child: Column(
-        children: [
-          header,
-          Container(width: screenWidth),
-          Row(
-            children: [
-              Column(
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    color: Colors.redAccent,
-                    height: screenHeight * 0.3,
-                    width: firstColumnWidth,
-                  ),
-                  SizedBox(
-                    height: screenHeight * 0.13,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    color: Colors.redAccent,
-                    height: screenHeight * 0.3,
-                    width: firstColumnWidth,
-                  ),
-                  SizedBox(
-                    height: screenHeight * 0.13,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    color: Colors.redAccent,
-                    height: screenHeight * 0.3,
-                    width: firstColumnWidth,
-                  ),
-                  SizedBox(
-                    height: screenHeight * 0.13,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    color: Colors.redAccent,
-                    height: screenHeight * 0.3,
-                    width: firstColumnWidth,
-                  ),
-                ],
-              ),
-              SizedBox(
-                width: screenWidth * 0.05,
-              ),
-              Column(
-                children: [
-                  Container(
-                    color: Colors.redAccent,
-                    height: screenHeight * 0.9,
-                    width: secondColumnWidth,
-                  ),
-                ],
-              ),
-              SizedBox(
-                width: screenWidth * 0.01,
-              ),
-            ],
-          ),
-        ],
+        children: [header, ...children],
       ),
     );
   }
