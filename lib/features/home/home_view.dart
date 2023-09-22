@@ -24,49 +24,24 @@ class HomeView extends GetView<HomeController> {
         screenHeight: screenHeight,
         children: [
           Container(width: screenWidth),
-          Row(
-            children: [
-              Column(
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    color: Colors.redAccent,
-                    height: screenHeight * 0.3,
-                    width: firstColumnWidth,
-                    child: MeuPreviewLivro(livro: listaLivros[0]),
-                  ),
-                  SizedBox(
-                    height: screenHeight * 0.13,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    color: Colors.redAccent,
-                    height: screenHeight * 0.3,
-                    width: firstColumnWidth,
-                    child: MeuPreviewLivro(livro: listaLivros[1]),
-                  ),
-                  SizedBox(
-                    height: screenHeight * 0.13,
-                  ),
-                ],
-              ),
-              SizedBox(
-                width: screenWidth * 0.05,
-              ),
-              Column(
-                children: [
-                  Container(
-                    color: Colors.redAccent,
-                    height: screenHeight * 0.9,
-                    width: secondColumnWidth,
-                  ),
-                ],
-              ),
-              SizedBox(
-                width: screenWidth * 0.01,
-              ),
-            ],
-          ),
+          ListView.separated(
+            itemCount: listaLivros.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                alignment: Alignment.center,
+                color: Colors.redAccent,
+                height: screenHeight * 0.3,
+                width: firstColumnWidth,
+                child: MeuPreviewLivro(livro: listaLivros[index]),
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return SizedBox(
+                height: screenHeight * 0.13,
+              );
+            },
+          )
+
         ],
       ),
       // body: Obx(
@@ -124,9 +99,50 @@ class ScrollableTwoColumnLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     final firstColumnWidth = screenWidth * 0.65;
     final secondColumnWidth = screenWidth * 0.24;
+
+    // Convert listaLivros to a list of widgets
+    List<Widget> bookPreviews = List.generate(
+      listaLivros.length,
+          (index) => Column(
+        children: [
+          Container(
+            alignment: Alignment.center,
+            color: Colors.redAccent,
+            height: screenHeight * 0.3,
+            width: firstColumnWidth,
+            child: MeuPreviewLivro(livro: listaLivros[index]),
+          ),
+          SizedBox(
+            height: screenHeight * 0.13,
+          ),
+        ],
+      ),
+    );
+
     return SingleChildScrollView(
       child: Column(
-        children: [header, ...children],
+        children: [
+          header,
+          Row(
+            children: [
+              Column(
+                children: bookPreviews,
+              ),
+              SizedBox(
+                width: screenWidth * 0.05,
+              ),
+              // Second column
+              Container(
+                color: Colors.redAccent,
+                height: screenHeight * 0.9,
+                width: secondColumnWidth,
+              ),
+              SizedBox(
+                width: screenWidth * 0.01,
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
